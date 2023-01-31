@@ -26,7 +26,7 @@ export default function Table() {
     <>
       <table className="table text-center pt-5 mt-5">
         <thead>
-          <tr className="table-white">
+          <tr className="table-dark">
             <th>No</th>
             <th>Profile</th>
             <th>Name</th>

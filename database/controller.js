@@ -33,6 +33,9 @@ export async function postUser(req, res) {
     if (!formData)
       return res.status(404).json({ error: "Form data not provided...!" });
     Users.create(formData, (err, data) => {
+      jwt.sign({ foo: "bar" }, { algorithm: "RS256" }, function (err, token) {
+        console.log(token);
+      });
       return res.status(200).json(data);
     });
   } catch (error) {
@@ -47,8 +50,8 @@ export async function putUser(req, res) {
     const formData = req.body;
 
     if (userId && formData) {
-      await Users.findByIdAndUpdate(userId, formData , {
-        new: true
+      await Users.findByIdAndUpdate(userId, formData, {
+        new: true,
       });
       res.status(200).json(formData);
     }
